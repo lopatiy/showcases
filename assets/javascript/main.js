@@ -1,7 +1,7 @@
 var particles = [];
 
 function setup() {
-    createCanvas(800, 800);
+    createCanvas(document.body.getBoundingClientRect().width, document.body.getBoundingClientRect().height);
     var particlesMap = new Array(width+1);
 
     for (var i = 0; i < particlesMap.length; i++) {
@@ -10,7 +10,7 @@ function setup() {
 
     fps.start();
 
-    for (var j = 0; j < 100; j++) {
+    for (var j = 0; j < 400; j++) {
         var x = random(width);
         var y = random(height);
 
