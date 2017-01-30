@@ -5,6 +5,9 @@ function Particle(x, y, particlesMap) {
     this.map = particlesMap;
     this.position = createVector(x, y);
     this.map[x][y] = this;
+    this.type = Math.round(random(0, 1));
+    
+    this.linkNumber = 0;
 
     this.velocity = createVector(0, 0);
     this.acceleration = createVector(0, 0);
@@ -13,8 +16,13 @@ function Particle(x, y, particlesMap) {
         this.acceleration.add(force);
     };
 
+    this.inverse = function(){
+        this.type = +!this.type
+    };
+
     this.update = function () {
         this.velocity.add(this.acceleration);
+
         if (this.velocity.mag() > 0.8) {
             this.velocity.add(this.velocity.copy().normalize().mult(-0.005));
         }
@@ -31,6 +39,7 @@ function Particle(x, y, particlesMap) {
             this.map[this.position.x > 800 ? 800 : this.position.x][Math.abs(Math.floor(this.position.y))] = undefined;
         }
         this.acceleration.mult(0);
+        this.linkNumber = 0;
     };
 
     this.edges = function (type) {
@@ -55,41 +64,27 @@ function Particle(x, y, particlesMap) {
         }
     };
 
-    /*
-    this.connectors = function () {
-        var size = 50;
-        var x = Math.abs(Math.floor(this.position.x)) - size / 2;
-        var y = Math.abs(Math.floor(this.position.y)) - size / 2;
-
-        var iBound = size+x > this.map.length ? this.map.length : size+x;
-        var jBound = size+y > this.map[0].length ? this.map[0].length : size+y;
-
-        for (var i = x < 1 ? 0 : x; i < iBound ; i++) {
-            for (var j = y < 1 ? 0 : y; j < jBound; j++) {
-                if (this.map[i][j]) {
-                    this.renderConnector(i, j);
+    this.links = function () {
+        for(var i = 0; i < particles.length; i++) {
+            var other = particles[i];
+            if(this.linkNumber < 6 && other.linkNumber < 6 ){
+                var distance = dist(other.position.x,other.position.y, this.position.x, this.position.y);
+                if(distance < 150) {
+                    this.renderLink(other, 100 - distance/3*2)
                 }
             }
         }
-    };*/
-
-    this.connectors = function () {
-        for(var i = 0; i < particles.length; i++) {
-            var other = particles[i];
-            var distance = dist(other.position.x,other.position.y, this.position.x, this.position.y);
-            if(distance < 150) {
-                this.renderConnector(other.position.x, other.position.y, 101 - distance/3*2)
-            }
-        }
     };
 
-    this.renderConnector = function (x, y, opacity) {
-        stroke(255, 255, 255, opacity? opacity : 100);
-        line(this.position.x, this.position.y, x, y);
+    this.renderLink = function (other, opacity) {
+        other.linkNumber++;
+        this.linkNumber++;
+        stroke(255,255,255,opacity);
+        line(this.position.x, this.position.y, other.position.x, other.position.y);
     };
 
     this.show = function () {
-        fill(255);
+        this.type ? fill(255,100,100) : fill(100,100,255);
         noStroke();
         ellipse(this.position.x, this.position.y, 5);
     };

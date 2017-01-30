@@ -7,7 +7,16 @@
     <script language="javascript" type="text/javascript" src="assets/javascript/particles/particle.js"></script>
     <style> body {padding: 0; margin: 0;} </style>
 </head>
-
-<body>
+<body oncontextmenu="rightClick(event)">
+<script>
+    var particles = [];
+    var rightClick = function(event) {
+        event.preventDefault();
+        for (var i = 0; i < particles.length; i++) {
+            particles[i].inverse();
+        }
+    };
+    document.body.addEventListener('oncontextmenu', rightClick)
+</script>
 </body>
 </html>
