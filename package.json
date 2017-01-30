@@ -1,0 +1,30 @@
+{
+  "name": "showcases",
+  "version": "0.0.1",
+  "description": "Check README.MD",
+  "main": "index.html",
+  "dependencies": {
+    "p5": "^0.5.6",
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lopatiy/showcases.git"
+  },
+  "keywords": [
+    "p5",
+    "js",
+    "javascript",
+    "canvas",
+    "html"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lopatiy/showcases/issues"
+  },
+  "homepage": "https://github.com/lopatiy/showcases#readme"
+}
