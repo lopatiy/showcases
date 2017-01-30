@@ -10,7 +10,7 @@ function setup() {
 
     fps.start();
 
-    for (var j = 0; j < 400; j++) {
+    for (var j = 0; j < 80; j++) {
         var x = random(width);
         var y = random(height);
 

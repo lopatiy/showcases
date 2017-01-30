@@ -4,7 +4,7 @@ function Particle(x, y, particlesMap) {
 
     this.map = particlesMap;
     this.position = createVector(x, y);
-    this.map[x][y] = 1;
+    this.map[x][y] = this;
 
     this.velocity = createVector(0, 0);
     this.acceleration = createVector(0, 0);
@@ -55,13 +55,14 @@ function Particle(x, y, particlesMap) {
         }
     };
 
+    /*
     this.connectors = function () {
         var size = 50;
         var x = Math.abs(Math.floor(this.position.x)) - size / 2;
         var y = Math.abs(Math.floor(this.position.y)) - size / 2;
 
-        var iBound = size+x > 800 ? 800 : size+x;
-        var jBound = size+y > 800 ? 800 : size+y;
+        var iBound = size+x > this.map.length ? this.map.length : size+x;
+        var jBound = size+y > this.map[0].length ? this.map[0].length : size+y;
 
         for (var i = x < 1 ? 0 : x; i < iBound ; i++) {
             for (var j = y < 1 ? 0 : y; j < jBound; j++) {
@@ -70,16 +71,26 @@ function Particle(x, y, particlesMap) {
                 }
             }
         }
+    };*/
+
+    this.connectors = function () {
+        for(var i = 0; i < particles.length; i++) {
+            var other = particles[i];
+            var distance = dist(other.position.x,other.position.y, this.position.x, this.position.y);
+            if(distance < 150) {
+                this.renderConnector(other.position.x, other.position.y, 101 - distance/3*2)
+            }
+        }
     };
 
-    this.renderConnector = function (x, y) {
-        stroke(255, 255, 255, 100);
+    this.renderConnector = function (x, y, opacity) {
+        stroke(255, 255, 255, opacity? opacity : 100);
         line(this.position.x, this.position.y, x, y);
     };
 
     this.show = function () {
         fill(255);
         noStroke();
-        ellipse(this.position.x, this.position.y, 3);
+        ellipse(this.position.x, this.position.y, 5);
     };
 }
