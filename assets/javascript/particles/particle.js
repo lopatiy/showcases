@@ -1,4 +1,4 @@
-function Particle(x,y) {
+function Particle(x, y) {
     this.position = createVector(x,y);
     this.velocity = createVector(0,0);
     this.acceleration = createVector(0,0);
@@ -16,13 +16,25 @@ function Particle(x,y) {
         this.acceleration.mult(0);
     };
     
-    this.edges = function (){
-        if(this.position.x < 0 || this.position.x > width){
-            this.position.x = width - this.position.x;
+    this.edges = function (type){
+        if(!type){
+            if(this.position.x < 0 || this.position.x > width){
+                this.position.x = width - this.position.x;
+            }
+
+            if(this.position.y < 0 || this.position.y > height){
+                this.position.y = height - this.position.y;
+            }
         }
 
-        if(this.position.y < 0 || this.position.y > height){
-            this.position.y = height - this.position.y;
+        if(type === 1) {
+            if (this.position.x < 0 || this.position.x > width) {
+                this.velocity.x = -this.velocity.x;
+            }
+
+            if (this.position.y < 0 || this.position.y > height) {
+                this.velocity.y = -this.velocity.y;
+            }
         }
     };
 

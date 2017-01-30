@@ -2,8 +2,9 @@ var particles = [];
 
 function setup() {
     createCanvas(800,800);
+    fps.start();
 
-    for(var i = 0; i < 100; i++){
+    for(var i = 0; i < 200; i++){
         particles.push(new Particle(random(width), random(height)));
     }
 }
@@ -20,7 +21,9 @@ function draw(){
             particles[i].apply(force);
         }
         particles[i].update();
-        particles[i].edges();
+        particles[i].edges(1);
         particles[i].show();
     }
+
+    fps.frame();
 }
