@@ -22,7 +22,8 @@ function preload() {
 
         for (var x = 0; x < img.width; x++) {
             for (var y = 0; y < img.height; y++) {
-                if (Math.max.apply(this, img.get(x, y))) {
+                var color = img.get(x, y);
+                if (Math.max.apply(this, color)) {
                     particles.push(new Particle(offsetX + x * scale, offsetY + y * scale, color))
                 }
             }
@@ -37,7 +38,7 @@ function setup() {
 }
 
 function draw() {
-    background(51);
+    background(255);
     processImage(img);
     fps.frame();
 }
@@ -48,11 +49,14 @@ function processImage(img){
         var force;
 
         if (isMousePressed) {
-            force = p5.Vector.sub(mouse, particles[i].position).normalize().mult(particles[i].type ? 0.03 : -0.03);
+            force = p5.Vector.sub(mouse, particles[i].position).normalize().mult(0.03);
             particles[i].apply(force);
         }
+
         particles[i].show();
+        //particles[i].links();
         particles[i].update();
+        particles[i].friction();
     }
 }
 

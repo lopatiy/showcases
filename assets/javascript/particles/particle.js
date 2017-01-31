@@ -1,6 +1,7 @@
 function Particle(x, y, color) {
     this.color = color;
-    this.position = createVector(x, y);
+    this.originalPosition = createVector(x, y);
+    this.position = createVector(x, y).copy();
     this.type = Math.round(random(0, 1));
     
     this.linkNumber = 0;
@@ -12,20 +13,15 @@ function Particle(x, y, color) {
         this.acceleration.add(force);
     };
 
-    this.inverse = function(){
-        this.type = +!this.type
-    };
-
     this.update = function () {
         this.velocity.add(this.acceleration);
-
-        if (this.velocity.mag() > 0.8) {
-            this.velocity.add(this.velocity.copy().normalize().mult(-0.005));
-        }
-
         this.position.add(this.velocity);
         this.acceleration.mult(0);
         this.linkNumber = 0;
+    };
+
+    this.friction = function () {
+        this.velocity.add(this.velocity.copy().normalize().mult(-0.005));
     };
 
     this.edges = function (type) {
@@ -65,12 +61,13 @@ function Particle(x, y, color) {
     this.renderLink = function (other, opacity) {
         other.linkNumber++;
         this.linkNumber++;
-        stroke(255,255,255,opacity);
+        stroke(0,0,0,opacity);
         line(this.position.x, this.position.y, other.position.x, other.position.y);
     };
 
     this.show = function () {
-        this.type ? fill(255,100,100) : fill(100,100,255);
+        //this.type ? fill(255,100,100) : fill(100,100,255);
+        fill(this.color);
         noStroke();
         ellipse(this.position.x, this.position.y, 5);
     };
