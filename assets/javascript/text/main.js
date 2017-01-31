@@ -4,17 +4,21 @@ var particles = [];
 
 function preload() {
     var canvas = document.createElement('canvas');
-    canvas.width = 55;
-    canvas.height = 20;
+    var text = 'Лопатий Работает';
+    var size = 16;
+    canvas.width = text.length * size*0.55;
+    canvas.height = size;
     var ctx = canvas.getContext('2d');
-    ctx.font = '16px Arial';
-    ctx.fillText('Lopatiy', 0, 16);
+    ctx.font = size + 'px Arial';
+
+    ctx.fillText(text, 0, 16);
     img = loadImage(canvas.toDataURL(), function () {
         img.loadPixels();
 
-        var scale = 15;
-        var offsetX = img.width * scale / 2;
-        var offsetY = img.height * scale / 2;
+        var scale = 9;
+
+        var offsetX = (document.body.getBoundingClientRect().width - (scale * img.width))/2;
+        var offsetY = (document.body.getBoundingClientRect().height - (scale * img.height))/2;
 
         for (var x = 0; x < img.width; x++) {
             for (var y = 0; y < img.height; y++) {
