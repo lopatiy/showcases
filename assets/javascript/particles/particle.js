@@ -1,10 +1,6 @@
-function Particle(x, y, particlesMap) {
-    x = Math.abs(Math.floor(x));
-    y = Math.abs(Math.floor(y));
-
-    this.map = particlesMap;
+function Particle(x, y, color) {
+    this.color = color;
     this.position = createVector(x, y);
-    this.map[x][y] = this;
     this.type = Math.round(random(0, 1));
     
     this.linkNumber = 0;
@@ -27,17 +23,7 @@ function Particle(x, y, particlesMap) {
             this.velocity.add(this.velocity.copy().normalize().mult(-0.005));
         }
 
-        try{
-            this.map[Math.abs(Math.floor(this.position.x))][Math.abs(Math.floor(this.position.y))] = undefined;
-        } catch (err){
-            this.map[this.position.x > 800 ? 800 : this.position.x][Math.abs(Math.floor(this.position.y))] = undefined;
-        }
         this.position.add(this.velocity);
-        try {
-            this.map[Math.abs(Math.floor(this.position.x))][Math.abs(Math.floor(this.position.y))] = 1;
-        } catch (err){
-            this.map[this.position.x > 800 ? 800 : this.position.x][Math.abs(Math.floor(this.position.y))] = undefined;
-        }
         this.acceleration.mult(0);
         this.linkNumber = 0;
     };
