@@ -4,7 +4,7 @@ var particles = [];
 
 function preload() {
     var canvas = document.createElement('canvas');
-    var text = 'Лопатий Работает';
+    var text = 'Сёрега Играется';
     var size = 16;
     canvas.width = text.length * size*0.55;
     canvas.height = size;
@@ -12,16 +12,17 @@ function preload() {
     ctx.font = size + 'px Arial';
 
     ctx.fillText(text, 0, 16);
-    img = loadImage(canvas.toDataURL(), function () {
+    var canvasImg = canvas.toDataURL();
+    img = loadImage('assets/img/logo_01.svg', function () {
         img.loadPixels();
 
-        var scale = 9;
+        var scale = 5;
 
         var offsetX = (document.body.getBoundingClientRect().width - (scale * img.width))/2;
         var offsetY = (document.body.getBoundingClientRect().height - (scale * img.height))/2;
 
-        for (var x = 0; x < img.width; x++) {
-            for (var y = 0; y < img.height; y++) {
+        for (var x = 0; x < img.width; x+=3) {
+            for (var y = 0; y < img.height; y+=3) {
                 var color = img.get(x, y);
                 if (Math.max.apply(this, color)) {
                     particles.push(new Particle(offsetX + x * scale, offsetY + y * scale, color))
@@ -32,13 +33,14 @@ function preload() {
 }
 
 function setup() {
+    frameRate(30);
     createCanvas(document.body.getBoundingClientRect().width, document.body.getBoundingClientRect().height);
     preload();
     fps.start();
 }
 
 function draw() {
-    background(255);
+    background(51);
     processImage(img);
     fps.frame();
 }
