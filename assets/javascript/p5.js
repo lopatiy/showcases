@@ -8844,21 +8844,21 @@ var p5 = function(sketch, node, sync) {
    * @method preload
    * @example
    * <div><code>
-   * var img;
+   * var logo;
    * var c;
    * function preload() {  // preload() runs once
-   *   img = loadImage('assets/laDefense.jpg');
+   *   logo = loadImage('assets/laDefense.jpg');
    * }
    *
    * function setup() {  // setup() waits until preload() is done
-   *   img.loadPixels();
+   *   logo.loadPixels();
    *   // get color of middle pixel
-   *   c = img.get(img.width/2, img.height/2);
+   *   c = logo.get(logo.width/2, logo.height/2);
    * }
    *
    * function draw() {
    *   background(c);
-   *   image(img, 25, 25, 50, 50);
+   *   image(logo, 25, 25, 50, 50);
    * }
    * </code></div>
    *
@@ -11672,9 +11672,9 @@ p5.Element.prototype.dragLeave = function (fxn) {
  * }
  *
  * function gotFile(file) {
- *   var img = createImg(file.data).hide();
+ *   var logo = createImg(file.data).hide();
  *   // Draw the image onto the canvas
- *   image(img, 0, 0, width, height);
+ *   image(logo, 0, 0, width, height);
  * }
  * </code></div>
  *
@@ -17755,48 +17755,48 @@ var frames = [];
  * @example
  * <div>
  * <code>
- * img = createImage(66, 66);
- * img.loadPixels();
- * for (i = 0; i < img.width; i++) {
- *   for (j = 0; j < img.height; j++) {
- *     img.set(i, j, color(0, 90, 102));
+ * logo = createImage(66, 66);
+ * logo.loadPixels();
+ * for (i = 0; i < logo.width; i++) {
+ *   for (j = 0; j < logo.height; j++) {
+ *     logo.set(i, j, color(0, 90, 102));
  *   }
  * }
- * img.updatePixels();
- * image(img, 17, 17);
+ * logo.updatePixels();
+ * image(logo, 17, 17);
  * </code>
  * </div>
  *
  * <div>
  * <code>
- * img = createImage(66, 66);
- * img.loadPixels();
- * for (i = 0; i < img.width; i++) {
- *   for (j = 0; j < img.height; j++) {
- *     img.set(i, j, color(0, 90, 102, i % img.width * 2));
+ * logo = createImage(66, 66);
+ * logo.loadPixels();
+ * for (i = 0; i < logo.width; i++) {
+ *   for (j = 0; j < logo.height; j++) {
+ *     logo.set(i, j, color(0, 90, 102, i % logo.width * 2));
  *   }
  * }
- * img.updatePixels();
- * image(img, 17, 17);
- * image(img, 34, 34);
+ * logo.updatePixels();
+ * image(logo, 17, 17);
+ * image(logo, 34, 34);
  * </code>
  * </div>
  *
  * <div>
  * <code>
  * var pink = color(255, 102, 204);
- * img = createImage(66, 66);
- * img.loadPixels();
+ * logo = createImage(66, 66);
+ * logo.loadPixels();
  * var d = pixelDensity;
  * var halfImage = 4 * (width * d) * (height/2 * d);
  * for (var i = 0; i < halfImage; i+=4) {
- *   img.pixels[i] = red(pink);
- *   img.pixels[i+1] = green(pink);
- *   img.pixels[i+2] = blue(pink);
- *   img.pixels[i+3] = alpha(pink);
+ *   logo.pixels[i] = red(pink);
+ *   logo.pixels[i+1] = green(pink);
+ *   logo.pixels[i+2] = blue(pink);
+ *   logo.pixels[i+3] = alpha(pink);
  * }
- * img.updatePixels();
- * image(img, 17, 17);
+ * logo.updatePixels();
+ * image(logo, 17, 17);
  * </code>
  * </div>
  *
@@ -18085,12 +18085,12 @@ _dereq_('../core/error_helpers');
  * @example
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/laDefense.jpg");
+ *   logo = loadImage("assets/laDefense.jpg");
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(logo, 0, 0);
  * }
  * </code>
  * </div>
@@ -18098,8 +18098,8 @@ _dereq_('../core/error_helpers');
  * <code>
  * function setup() {
  *   // here we use a callback to display the image after loading
- *   loadImage("assets/laDefense.jpg", function(img) {
- *     image(img, 0, 0);
+ *   loadImage("assets/laDefense.jpg", function(logo) {
+ *     image(logo, 0, 0);
  *   });
  * }
  * </code>
@@ -18175,7 +18175,7 @@ function _sAssign(sVal, iVal) {
  * Draw an image to the main canvas of the p5js sketch
  *
  * @method image
- * @param  {p5.Image} img    the image to display
+ * @param  {p5.Image} logo    the image to display
  * @param  {Number}   x      the x-coordinate at which to place the top-left
  *                           corner of the source image
  * @param  {Number}   y      the y-coordinate at which to place the top-left
@@ -18185,14 +18185,14 @@ function _sAssign(sVal, iVal) {
  * @example
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/laDefense.jpg");
+ *   logo = loadImage("assets/laDefense.jpg");
  * }
  * function setup() {
- *   image(img, 0, 0);
- *   image(img, 0, 0, 100, 100);
- *   image(img, 0, 0, 100, 100, 0, 0, 100, 100);
+ *   image(logo, 0, 0);
+ *   image(logo, 0, 0, 100, 100);
+ *   image(logo, 0, 0, 100, 100, 0, 0, 100, 100);
  * }
  * </code>
  * </div>
@@ -18200,8 +18200,8 @@ function _sAssign(sVal, iVal) {
  * <code>
  * function setup() {
  *   // here we use a callback to display the image after loading
- *   loadImage("assets/laDefense.jpg", function(img) {
- *     image(img, 0, 0);
+ *   loadImage("assets/laDefense.jpg", function(logo) {
+ *     image(logo, 0, 0);
  *   });
  * }
  * </code>
@@ -18314,42 +18314,42 @@ p5.prototype.image =
  * @example
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/laDefense.jpg");
+ *   logo = loadImage("assets/laDefense.jpg");
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(logo, 0, 0);
  *   tint(0, 153, 204);  // Tint blue
- *   image(img, 50, 0);
+ *   image(logo, 50, 0);
  * }
  * </code>
  * </div>
  *
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/laDefense.jpg");
+ *   logo = loadImage("assets/laDefense.jpg");
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(logo, 0, 0);
  *   tint(0, 153, 204, 126);  // Tint blue and set transparency
- *   image(img, 50, 0);
+ *   image(logo, 50, 0);
  * }
  * </code>
  * </div>
  *
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/laDefense.jpg");
+ *   logo = loadImage("assets/laDefense.jpg");
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(logo, 0, 0);
  *   tint(255, 126);  // Apply transparency without changing color
- *   image(img, 50, 0);
+ *   image(logo, 50, 0);
  * }
  * </code>
  * </div>
@@ -18373,15 +18373,15 @@ p5.prototype.tint = function () {
  * @example
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/bricks.jpg");
+ *   logo = loadImage("assets/bricks.jpg");
  * }
  * function setup() {
  *   tint(0, 153, 204);  // Tint blue
- *   image(img, 0, 0);
+ *   image(logo, 0, 0);
  *   noTint();  // Disable tint
- *   image(img, 50, 0);
+ *   image(logo, 50, 0);
  * }
  * </code>
  * </div>
@@ -18452,39 +18452,39 @@ p5.prototype._getTintedImageCanvas = function(img) {
  *
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/bricks.jpg");
+ *   logo = loadImage("assets/bricks.jpg");
  * }
  * function setup() {
  *   imageMode(CORNER);
- *   image(img, 10, 10, 50, 50);
+ *   image(logo, 10, 10, 50, 50);
  * }
  * </code>
  * </div>
  *
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/bricks.jpg");
+ *   logo = loadImage("assets/bricks.jpg");
  * }
  * function setup() {
  *   imageMode(CORNERS);
- *   image(img, 10, 10, 90, 40);
+ *   image(logo, 10, 10, 90, 40);
  * }
  * </code>
  * </div>
  *
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/bricks.jpg");
+ *   logo = loadImage("assets/bricks.jpg");
  * }
  * function setup() {
  *   imageMode(CENTER);
- *   image(img, 50, 50, 80, 80);
+ *   image(logo, 50, 50, 80, 80);
  * }
  * </code>
  * </div>
@@ -18557,16 +18557,16 @@ p5.Image = function(width, height){
    * @property width
    * @example
    * <div><code>
-   * var img;
+   * var logo;
    * function preload() {
-   *   img = loadImage("assets/rockies.jpg");
+   *   logo = loadImage("assets/rockies.jpg");
    * }
    *
    * function setup() {
    *   createCanvas(100, 100);
-   *   image(img, 0, 0);
-   *   for (var i=0; i < img.width; i++) {
-   *     var c = img.get(i, img.height/2);
+   *   image(logo, 0, 0);
+   *   for (var i=0; i < logo.width; i++) {
+   *     var c = logo.get(i, logo.height/2);
    *     stroke(c);
    *     line(i, height/2, i, height);
    *   }
@@ -18583,16 +18583,16 @@ p5.Image = function(width, height){
    * @property height
    * @example
    * <div><code>
-   * var img;
+   * var logo;
    * function preload() {
-   *   img = loadImage("assets/rockies.jpg");
+   *   logo = loadImage("assets/rockies.jpg");
    * }
    *
    * function setup() {
    *   createCanvas(100, 100);
-   *   image(img, 0, 0);
-   *   for (var i=0; i < img.height; i++) {
-   *     var c = img.get(img.width/2, i);
+   *   image(logo, 0, 0);
+   *   for (var i=0; i < logo.height; i++) {
+   *     var c = logo.get(logo.width/2, i);
    *     stroke(c);
    *     line(0, i, width/2, i);
    *   }
@@ -18646,30 +18646,30 @@ p5.Image = function(width, height){
    * @example
    * <div>
    * <code>
-   * img = createImage(66, 66);
-   * img.loadPixels();
-   * for (i = 0; i < img.width; i++) {
-   *   for (j = 0; j < img.height; j++) {
-   *     img.set(i, j, color(0, 90, 102));
+   * logo = createImage(66, 66);
+   * logo.loadPixels();
+   * for (i = 0; i < logo.width; i++) {
+   *   for (j = 0; j < logo.height; j++) {
+   *     logo.set(i, j, color(0, 90, 102));
    *   }
    * }
-   * img.updatePixels();
-   * image(img, 17, 17);
+   * logo.updatePixels();
+   * image(logo, 17, 17);
    * </code>
    * </div>
    * <div>
    * <code>
    * var pink = color(255, 102, 204);
-   * img = createImage(66, 66);
-   * img.loadPixels();
+   * logo = createImage(66, 66);
+   * logo.loadPixels();
    * for (var i = 0; i < 4*(width*height/2); i+=4) {
-   *   img.pixels[i] = red(pink);
-   *   img.pixels[i+1] = green(pink);
-   *   img.pixels[i+2] = blue(pink);
-   *   img.pixels[i+3] = alpha(pink);
+   *   logo.pixels[i] = red(pink);
+   *   logo.pixels[i+1] = green(pink);
+   *   logo.pixels[i+2] = blue(pink);
+   *   logo.pixels[i+3] = alpha(pink);
    * }
-   * img.updatePixels();
-   * image(img, 17, 17);
+   * logo.updatePixels();
+   * image(logo, 17, 17);
    * </code>
    * </div>
    *
@@ -18829,16 +18829,16 @@ p5.Image.prototype.get = function(x, y, w, h){
  * @example
  * <div>
  * <code>
- * img = createImage(66, 66);
- * img.loadPixels();
- * for (i = 0; i < img.width; i++) {
- *   for (j = 0; j < img.height; j++) {
- *     img.set(i, j, color(0, 90, 102, i % img.width * 2));
+ * logo = createImage(66, 66);
+ * logo.loadPixels();
+ * for (i = 0; i < logo.width; i++) {
+ *   for (j = 0; j < logo.height; j++) {
+ *     logo.set(i, j, color(0, 90, 102, i % logo.width * 2));
  *   }
  * }
- * img.updatePixels();
- * image(img, 17, 17);
- * image(img, 34, 34);
+ * logo.updatePixels();
+ * image(logo, 17, 17);
+ * image(logo, 34, 34);
  * </code>
  * </div>
  *
@@ -18861,18 +18861,18 @@ p5.Image.prototype.set = function(x, y, imgOrCol){
  * @param {Number} height the resized image height
  * @example
  * <div><code>
- * var img;
+ * var logo;
  *
  * function setup() {
- *   img = loadImage("assets/rockies.jpg");
+ *   logo = loadImage("assets/rockies.jpg");
  * }
 
  * function draw() {
- *   image(img, 0, 0);
+ *   image(logo, 0, 0);
  * }
  *
  * function mousePressed() {
- *   img.resize(50, 100);
+ *   logo.resize(50, 100);
  * }
  * </code></div>
  *
@@ -19399,15 +19399,15 @@ p5.prototype.blend = function() {
  *
  * @example
  * <div><code>
- * var img;
+ * var logo;
  *
  * function preload() {
- *   img = loadImage("assets/rockies.jpg");
+ *   logo = loadImage("assets/rockies.jpg");
  * }
  *
  * function setup() {
- *   background(img);
- *   copy(img, 7, 22, 10, 10, 35, 25, 50, 50);
+ *   background(logo);
+ *   copy(logo, 7, 22, 10, 10, 35, 25, 50, 50);
  *   stroke(255);
  *   noFill();
  *   // Rectangle shows area being copied
@@ -19479,12 +19479,12 @@ p5.prototype.copy = function () {
  * @example
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/bricks.jpg");
+ *   logo = loadImage("assets/bricks.jpg");
  * }
  * function setup() {
- *  image(img, 0, 0);
+ *  image(logo, 0, 0);
  *  filter(THRESHOLD);
  * }
  * </code>
@@ -19492,12 +19492,12 @@ p5.prototype.copy = function () {
  *
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/bricks.jpg");
+ *   logo = loadImage("assets/bricks.jpg");
  * }
  * function setup() {
- *  image(img, 0, 0);
+ *  image(logo, 0, 0);
  *  filter(GRAY);
  * }
  * </code>
@@ -19505,12 +19505,12 @@ p5.prototype.copy = function () {
  *
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/bricks.jpg");
+ *   logo = loadImage("assets/bricks.jpg");
  * }
  * function setup() {
- *  image(img, 0, 0);
+ *  image(logo, 0, 0);
  *  filter(OPAQUE);
  * }
  * </code>
@@ -19518,12 +19518,12 @@ p5.prototype.copy = function () {
  *
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/bricks.jpg");
+ *   logo = loadImage("assets/bricks.jpg");
  * }
  * function setup() {
- *  image(img, 0, 0);
+ *  image(logo, 0, 0);
  *  filter(INVERT);
  * }
  * </code>
@@ -19531,12 +19531,12 @@ p5.prototype.copy = function () {
  *
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/bricks.jpg");
+ *   logo = loadImage("assets/bricks.jpg");
  * }
  * function setup() {
- *  image(img, 0, 0);
+ *  image(logo, 0, 0);
  *  filter(POSTERIZE,3);
  * }
  * </code>
@@ -19544,12 +19544,12 @@ p5.prototype.copy = function () {
  *
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/bricks.jpg");
+ *   logo = loadImage("assets/bricks.jpg");
  * }
  * function setup() {
- *  image(img, 0, 0);
+ *  image(logo, 0, 0);
  *  filter(DILATE);
  * }
  * </code>
@@ -19557,12 +19557,12 @@ p5.prototype.copy = function () {
  *
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/bricks.jpg");
+ *   logo = loadImage("assets/bricks.jpg");
  * }
  * function setup() {
- *  image(img, 0, 0);
+ *  image(logo, 0, 0);
  *  filter(BLUR,3);
  * }
  * </code>
@@ -19570,12 +19570,12 @@ p5.prototype.copy = function () {
  *
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/bricks.jpg");
+ *   logo = loadImage("assets/bricks.jpg");
  * }
  * function setup() {
- *  image(img, 0, 0);
+ *  image(logo, 0, 0);
  *  filter(ERODE);
  * }
  * </code>
@@ -19636,12 +19636,12 @@ p5.prototype.filter = function(operation, value) {
  * @example
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/rockies.jpg");
+ *   logo = loadImage("assets/rockies.jpg");
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(logo, 0, 0);
  *   var c = get();
  *   image(c, width/2, 0);
  * }
@@ -19650,12 +19650,12 @@ p5.prototype.filter = function(operation, value) {
  *
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/rockies.jpg");
+ *   logo = loadImage("assets/rockies.jpg");
  * }
  * function setup() {
- *   image(img, 0, 0);
+ *   image(logo, 0, 0);
  *   var c = get(50, 90);
  *   fill(c);
  *   noStroke();
@@ -19681,16 +19681,16 @@ p5.prototype.get = function(x, y, w, h){
  * @example
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/rockies.jpg");
+ *   logo = loadImage("assets/rockies.jpg");
  * }
  *
  * function setup() {
- *   image(img, 0, 0);
+ *   image(logo, 0, 0);
  *   var d = pixelDensity();
- *   var halfImage = 4 * (img.width * d) *
-       (img.height/2 * d);
+ *   var halfImage = 4 * (logo.width * d) *
+       (logo.height/2 * d);
  *   loadPixels();
  *   for (var i = 0; i < halfImage; i++) {
  *     pixels[i+halfImage] = pixels[i];
@@ -19759,13 +19759,13 @@ p5.prototype.loadPixels = function() {
  *
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/rockies.jpg");
+ *   logo = loadImage("assets/rockies.jpg");
  * }
  *
  * function setup() {
- *   set(0, 0, img);
+ *   set(0, 0, logo);
  *   updatePixels();
  *   line(0, 0, width, height);
  *   line(0, height, width, 0);
@@ -19798,15 +19798,15 @@ p5.prototype.set = function (x, y, imgOrCol) {
  * @example
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function preload() {
- *   img = loadImage("assets/rockies.jpg");
+ *   logo = loadImage("assets/rockies.jpg");
  * }
  *
  * function setup() {
- *   image(img, 0, 0);
- *   var halfImage = 4 * (img.width * pixelDensity()) *
- *     (img.height * pixelDensity()/2);
+ *   image(logo, 0, 0);
+ *   var halfImage = 4 * (logo.width * pixelDensity()) *
+ *     (logo.height * pixelDensity()/2);
  *   loadPixels();
  *   for (var i = 0; i < halfImage; i++) {
  *     pixels[i+halfImage] = pixels[i];
@@ -20883,7 +20883,7 @@ p5.prototype.saveBytes = function () {
  *  save(myJSON, 'my.json');        // Saves pretty JSON
  *  save(myJSON, 'my.json', true);  // Optimizes JSON filesize
  *
- *  save(img, 'my.png');            // Saves pImage as a png image
+ *  save(logo, 'my.png');            // Saves pImage as a png image
  *
  *  save(arrayOfStrings, 'my.txt'); // Saves strings to a text file with line
  *                                  // breaks after each item in the array
@@ -29746,10 +29746,10 @@ p5.prototype.normalMaterial = function(){
  * @example
  * <div>
  * <code>
- * var img;
+ * var logo;
  * function setup(){
  *   createCanvas(100, 100, WEBGL);
- *   img = loadImage("assets/laDefense.jpg");
+ *   logo = loadImage("assets/laDefense.jpg");
  * }
  *
  * function draw(){
@@ -29758,7 +29758,7 @@ p5.prototype.normalMaterial = function(){
  *   rotateX(frameCount * 0.01);
  *   rotateY(frameCount * 0.01);
  *   //pass image as texture
- *   texture(img);
+ *   texture(logo);
  *   box(200, 200, 200);
  * }
  * </code>
