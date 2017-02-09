@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="javascript" type="text/javascript" src="assets/javascript/particles/particle.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100%;
+        }
+    </style>
+</head>
+<body onload="setup()">
+<canvas id="canvas"></canvas>
+<script>
+    function setup() {
+        function render(x, y) {
+            c.fillStyle = 'red';
+            c.beginPath();
+            c.arc(x, y, 1, 0, 2 * Math.PI, !0);
+            c.fill();
+        }
+
+        function clear() {
+            c.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        var canvas = document.getElementById('canvas');
+        canvas.width = document.body.getBoundingClientRect().width;
+
+        var height = document.body.getBoundingClientRect().height;
+
+        canvas.height = height;
+        var c = canvas.getContext('2d');
+
+        var x = 0;
+        function draw() {
+            c.fillStyle = 'white';
+            c.fillRect(0, 0, canvas.width, height);
+
+            x+=3;
+            for (var i = 0; i < height; i += 3) {
+                render(x, i);
+            }
+        }
+        setInterval(draw, 33);
+    }
+    </script>
+</body>
+</html>
