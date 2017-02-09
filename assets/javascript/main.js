@@ -1,66 +1,49 @@
-var logo;
+function distanceSquared(vec1, vec2) {
+    var x = vec1.x - vec2.x;
+    var y = vec1.y - vec2.y;
 
-var particles = [];
+    return x*x + y*y;
+}
+
+var particles = [],
+    consts = {
+        FORCE : 0.06,
+        TEXT_SIZE : 16,
+        BG: 55
+    };
 
 function preload() {
-    var textCanvas = document.createElement('canvas');
-    var text = 'Сёрега Играется';
-    var size = 16;
-    textCanvas.width = text.length * size*0.55;
-    textCanvas.height = size;
-    var ctx = textCanvas.getContext('2d');
-    ctx.font = size + 'px Arial';
-
-    ctx.fillText(text, 0, 16);
-    var canvasImg = textCanvas.toDataURL();
-    logo = loadImage('assets/img/logo_01.svg', function () {
-        logo.loadPixels();
-
-        var scale = 3,
-            step = 2,
-            offsetX = (document.body.getBoundingClientRect().width - (scale * logo.width))/2,
-            offsetY = (document.body.getBoundingClientRect().height - (scale * logo.height))/2;
-
-        for (var x = 0; x < logo.width; x+=step) {
-            for (var y = 0; y < logo.height; y+=step) {
-                var color = logo.get(x, y);
-                if (Math.max.apply(this, color)) {
-                    particles.push(new Particle(offsetX + x * scale, offsetY + y * scale, color))
-                }
-            }
-        }
-    });
+    consts.containerWidth = document.body.getBoundingClientRect().width;
+    consts.containerHeight = document.body.getBoundingClientRect().height;
+    var canvasCenterX = consts.containerWidth / 2;
+    var canvasCenterY = consts.containerHeight / 2;
+    
+    particlizeImg(particles, 'assets/img/logo_01.svg', canvasCenterX, canvasCenterY);
+    particlizeText(particles, 'FRESHCODE', canvasCenterX, canvasCenterY);
 }
 
 var layout;
 
 function setup() {
-    createCanvas(document.body.getBoundingClientRect().width, document.body.getBoundingClientRect().height);
-    preload();
+    createCanvas(consts.containerWidth, consts.containerHeight);
     layout = new Layout();
-    fps.start();
 }
 
 function draw() {
-    background(51);
-    processLayout();
-    fps.frame();
+    background(consts.BG);
+    processLayout(layout);
 }
 
-function processLayout(){
+function processLayout(layout){
+    var mouse = createVector(mouseX, mouseY);
     for(var i = 0; i < particles.length; i++){
-        var force;
-
         if (isMousePressed) {
-            var mouse = createVector(mouseX, mouseY);
-            force = p5.Vector.sub(mouse, particles[i].position).normalize().mult(0.03);
+            var force = p5.Vector.sub(mouse, particles[i].position).normalize().mult(consts.FORCE);
             particles[i].apply(force);
         }
-
         particles[i].update();
         particles[i].friction();
-        layout.setColor(particles[i].position.x,particles[i].position.y, particles[i].color);
+        particles[i].show(layout);
     }
-
     layout.render();
 }
