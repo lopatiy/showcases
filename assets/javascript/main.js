@@ -7,7 +7,7 @@ function distanceSquared(vec1, vec2) {
 
 var particles = [],
     consts = {
-        FORCE : 0.06,
+        FORCE : 0.15,
         TEXT_SIZE : 16,
         BG: 55
     };
@@ -19,7 +19,7 @@ function preload() {
     var canvasCenterY = consts.containerHeight / 2;
     
     particlizeImg(particles, 'assets/img/logo_01.svg', canvasCenterX, canvasCenterY);
-    particlizeText(particles, 'FRESHCODE', canvasCenterX, canvasCenterY);
+    particlizeText(particles, 'Грейпфрут, ананас, черника', canvasCenterX, canvasCenterY);
 }
 
 var layout;
