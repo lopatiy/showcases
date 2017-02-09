@@ -19,7 +19,7 @@ function preload() {
     var canvasCenterY = consts.containerHeight / 2;
     
     particlizeImg(particles, 'assets/img/logo_01.svg', canvasCenterX, canvasCenterY);
-    particlizeText(particles, 'Грейпфрут, ананас, черника', canvasCenterX, canvasCenterY);
+    particlizeText(particles, 'FRESHCODE', canvasCenterX, canvasCenterY);
 }
 
 var layout;
